@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>رسالة لك</title>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1E7DE;--ink:#4A0A16;--muted:#8A6A5A;--ov:rgba(50,16,22,.6);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1114;--ink:#E9D3B0;--muted:#A8907A}}
+:root[data-theme="dark"]{--bg:#1B1114;--ink:#E9D3B0;--muted:#A8907A}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:'Aref Ruqaa','Amiri',Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-x:hidden}
+.stage{--w:min(88vw,420px);width:var(--w);margin:calc(var(--w)*.5) 0 2rem}
+.env{position:relative;width:100%;aspect-ratio:260/160;perspective:1200px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.env>*{position:absolute;inset:0;width:100%;height:100%;display:block}
+.back{z-index:1;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+.env>.letter{z-index:2;left:8%;width:84%;top:12%;height:78%;background:#FBF3E8;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#3A2418;font-size:clamp(1.05rem,5vw,1.4rem);box-shadow:0 1px 4px rgba(0,0,0,.3);transition:transform 1s ease}
+.letter.up{transform:translateY(-62%)}
+.pocket{z-index:3;pointer-events:none}
+.flap{z-index:4;transform-origin:50% 0;transform-style:preserve-3d;transition:transform .9s ease}
+.flap.open{transform:rotateX(180deg)}
+.face{position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.bk{transform:rotateX(180deg)}
+.seal{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.09)}}
+.hint{margin:1.6rem 0 0;color:var(--muted);font-size:1.1rem;text-align:center;transition:opacity .4s}
+.reader{position:fixed;inset:0;z-index:10;background:var(--ov);display:flex;align-items:center;justify-content:center;padding:calc(1rem + env(safe-area-inset-top,0px)) 1rem calc(1rem + env(safe-area-inset-bottom,0px));opacity:0;pointer-events:none;transition:opacity .6s}
+.reader.show{opacity:1;pointer-events:auto}
+.paper{width:min(92vw,460px);max-height:100%;overflow:auto;background:#FBF3E8;color:#3A2418;border-radius:4px;padding:1.8rem 1.5rem 1.4rem;box-shadow:0 12px 40px rgba(0,0,0,.45);transform:translateY(40px) scale(.88);transition:transform .9s ease}
+.show .paper{transform:none}
+.paper p{margin:0 0 1rem;font-size:1.25rem;line-height:2.4;text-align:center;opacity:0;transition:opacity .9s}
+.show .paper p{opacity:1}
+.show .paper p:nth-child(2){transition-delay:.6s}
+.show .paper p:nth-child(3){transition-delay:1.2s}
+.show .paper p:nth-child(4){transition-delay:1.8s}
+.show .paper p:nth-child(5){transition-delay:2.4s}
+.show .paper p:nth-child(6){transition-delay:3s}
+.show .paper p:nth-child(7){transition-delay:3.6s}
+.close{display:block;margin:.6rem auto 0;border:1px solid #6A1224;color:#6A1224;background:none;border-radius:999px;padding:.45rem 1.6rem;font:inherit;font-size:1.05rem;cursor:pointer}
+.close:focus-visible,.env:focus-visible{outline:2px solid #C9A04A;outline-offset:4px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="fo" fill="none" stroke="#D4B47A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M190 122C178 122 164 114 160 100C158 90 168 84 176 90C182 95 178 104 170 102"/>
+<path d="M186 84C170 76 140 74 112 82C100 85 94 92 98 98C104 104 114 100 112 94"/>
+<path d="M182 108C162 104 142 96 126 98C116 100 114 108 122 110C128 111 130 105 126 103"/>
+<path d="M186 128C170 130 152 126 140 116C134 110 138 104 144 108"/>
+<path d="M150 90C146 84 150 80 156 82"/>
+<path stroke-width=".8" d="M186 92C172 86 148 84 124 90"/>
+<path stroke-width=".8" d="M176 114C160 112 146 108 134 108"/>
+<g fill="#D4B47A" stroke="none"><path d="M138 82C144 76 152 78 152 84C146 87 141 86 138 82Z"/><path d="M120 102C124 96 132 98 132 103C127 106 123 105 120 102Z"/><circle cx="112" cy="94" r="1.6"/><circle cx="126" cy="103" r="1.6"/><circle cx="144" cy="108" r="1.6"/><circle cx="170" cy="102" r="1.6"/></g>
+</g>
+<g id="so" fill="none" stroke="#D4B47A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M72 114C80 108 92 108 98 114"/><path d="M72 114C72 140 72 160 72 186"/>
+<path d="M72 150C100 150 120 152 138 160"/>
+<path d="M72 150C90 140 110 146 118 156C122 164 114 170 108 164"/>
+<path d="M72 134C86 122 102 124 108 134C111 141 104 145 100 140"/>
+<path d="M72 166C86 178 102 176 108 166C111 159 104 155 100 160"/>
+<path d="M72 186C80 192 92 192 98 186"/><path d="M72 122C78 116 86 116 90 122"/><path d="M72 178C78 184 86 184 90 178"/>
+<path stroke-width=".8" d="M80 130C86 138 86 162 80 170"/>
+<path stroke-width=".8" d="M84 142C88 138 94 140 94 145C94 149 89 149 89 146"/>
+<path stroke-width=".8" d="M84 158C88 162 94 160 94 155C94 151 89 151 89 154"/>
+<g fill="#D4B47A" stroke="none"><path d="M102 142C106 136 114 138 114 143C109 146 105 145 102 142Z"/><path d="M102 158C106 164 114 162 114 157C109 154 105 155 102 158Z"/><circle cx="100" cy="140" r="1.6"/><circle cx="100" cy="160" r="1.6"/><circle cx="76" cy="150" r="2"/></g>
+</g>
+</defs></svg>
+
+<main class="stage">
+<div class="env" id="env" role="button" tabindex="0" aria-label="افتح الظرف">
+<svg class="back" viewBox="60 70 260 160" aria-hidden="true"><rect x="60" y="70" width="260" height="160" fill="#6E1526"/></svg>
+<div class="letter"><span>إِلى زَهراء</span></div>
+<svg class="pocket" viewBox="60 70 260 160" aria-hidden="true">
+<polygon points="60,70 190,165 60,230" fill="#7C1B2E" stroke="#4A0A16" stroke-width=".5" stroke-linejoin="round"/>
+<polygon points="320,70 190,165 320,230" fill="#7C1B2E" stroke="#4A0A16" stroke-width=".5" stroke-linejoin="round"/>
+<polygon points="60,230 190,150 320,230" fill="#5F1020" stroke="#4A0A16" stroke-width=".5" stroke-linejoin="round"/>
+<use href="#so"/><use href="#so" transform="translate(380 0) scale(-1 1)"/>
+</svg>
+<div class="flap" id="flap">
+<svg class="face" viewBox="60 70 260 160" aria-hidden="true">
+<polygon points="60,70 320,70 190,165" fill="#6A1224" stroke="#4A0A16" stroke-width=".5" stroke-linejoin="round"/>
+<path d="M190 76L190 132" fill="none" stroke="#D4B47A" stroke-width="1.4" stroke-linecap="round"/>
+<use href="#fo"/><use href="#fo" transform="translate(380 0) scale(-1 1)"/>
+<circle cx="190" cy="74" r="2.5" fill="#D4B47A"/><circle cx="190" cy="136" r="2" fill="#D4B47A"/>
+<g class="seal">
+<circle cx="190" cy="165" r="24" fill="#C9A04A" stroke="#8A6A1F" stroke-width="1.5"/>
+<circle cx="190" cy="165" r="19" fill="none" stroke="#E3C77E" stroke-width="1" stroke-dasharray="2 3"/>
+<circle cx="190" cy="165" r="15" fill="#B8903C" stroke="#E3C77E" stroke-width=".5"/>
+<text x="190" y="173" text-anchor="middle" style="fill:#4F3608;font-size:22px;font-weight:500;font-family:Georgia,serif">Z</text>
+</g>
+</svg>
+<svg class="face bk" viewBox="60 70 260 160" aria-hidden="true"><polygon points="60,70 320,70 190,165" fill="#4F0C1A" stroke="#4A0A16" stroke-width=".5" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<p class="hint" id="hint">اضغط على الختم لفتح الرسالة</p>
+</main>
+
+<div class="reader" id="reader" role="dialog" aria-label="الرسالة">
+<div class="paper">
+<p>إِلى أَنيسَةِ رُوحي وَزَهرَةِ عُمري<br>زَهراء ❤️</p>
+<p>أُحِبُّكِ حُبَّ الطَّريدِ لِلمَأمَنِ، أُحِبُّكِ لِأَنَّكِ أَميرَةُ قَلبي، وَلا أَرى غَيرَكِ رُوحاً أُحِبُّ قِرانَها،</p>
+<p>أَنتِ أَميرَةٌ في صِفاتِكِ، أَميرَةٌ في أَعمالِكِ،</p>
+<p>أُحِبُّكِ لِأَنَّني وَجَدتُ فيكِ الأَمانَ، وَجَدتُ فيكِ الأُنسَ، أُحِبُّكِ لِأَنَّكِ كُنتِ النُّورَ في شِدَّةِ العُتمَةِ،</p>
+<p>أُحِبُّكِ يا مُعَذِّبَتي في غَيهَبِ الغَسَقِ،</p>
+<p>أُحِبُّكِ يا كَوكَبي الدُّرِّيَّ</p>
+<p>أُحِبُّكِ ❤️</p>
+<button class="close" id="close">إغلاق</button>
+</div>
+</div>
+
+<script>
+const env=document.getElementById('env'),flap=document.getElementById('flap'),letter=env.querySelector('.letter'),reader=document.getElementById('reader'),hint=document.getElementById('hint');
+let busy=false;
+function openIt(){
+if(busy)return;busy=true;
+flap.classList.add('open');hint.style.opacity=0;
+setTimeout(()=>{flap.style.zIndex=0},450);
+setTimeout(()=>letter.classList.add('up'),900);
+setTimeout(()=>reader.classList.add('show'),1900);
+}
+function closeIt(){
+reader.classList.remove('show');
+setTimeout(()=>letter.classList.remove('up'),500);
+setTimeout(()=>{flap.style.zIndex=4;flap.classList.remove('open');hint.style.opacity=1},1500);
+setTimeout(()=>{busy=false},2500);
+}
+env.addEventListener('click',openIt);
+env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openIt()}});
+document.getElementById('close').addEventListener('click',closeIt);
+</script>
+</body>
+</html>
